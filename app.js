@@ -8,9 +8,9 @@ var app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
-app.listen(3000, () => {
-    console.log("Server running on port 3000");
+var PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log("Server running on port ", PORT);
 
     MongoClient.connect("mongodb+srv://masterelectricals:Masterelectricals@cluster0.1dhzp.mongodb.net/sampledb?retryWrites=true&w=majority", { useNewUrlParser: true }, (error, client) => {
         if (error) {
