@@ -6,6 +6,14 @@ var bodyParser= require('body-parser')
 
 var app = express();
 
+const corsObj = {
+    'origin': ['http://localhost:3000'],
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    'allowedHeaders' :  ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsObj));
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 var PORT = process.env.PORT || 3000;
