@@ -1,5 +1,5 @@
 
-import cors from 'cors';
+var cors = require('cors');
 var express = require("express");
 var MongoClient = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
@@ -9,10 +9,9 @@ var bodyParser= require('body-parser')
 
 var app = express();
 
-const corsObj = {
+var corsObj = {
     'origin': ['http://localhost:3000'],
-    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    'allowedHeaders' :  ['Content-Type', 'Authorization']
+    'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
 };
 
 app.use(cors(corsObj));
