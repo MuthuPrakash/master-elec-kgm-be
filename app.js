@@ -1,7 +1,10 @@
+
+import cors from 'cors';
 var express = require("express");
 var MongoClient = require('mongodb').MongoClient;
 var objectId = require('mongodb').ObjectID;
 var bodyParser= require('body-parser')
+
 // Connect to the db
 
 var app = express();
