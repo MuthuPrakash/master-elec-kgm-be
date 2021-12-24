@@ -85,6 +85,16 @@ app.get("/api/inventoryRental", (request, response) => {
     });
 });
 
+app.get("/api/inventoryRentalNonReturn", (request, response) => {
+    inventoryRentalCollection.find({isReturned: false}).toArray((error, result) => {
+        if (error) {
+            return response.status(500).json(error);
+        }
+        console.log(result);
+        response.send(result);
+    });
+});
+
 app.post("/api/addInventoryRental", (request, response) => {
 
     var rentalObj = {};
