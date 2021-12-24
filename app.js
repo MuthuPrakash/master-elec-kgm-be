@@ -16,6 +16,11 @@ var corsObj = {
 
 app.use(cors(corsObj));
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 var PORT = process.env.PORT || 3000;
