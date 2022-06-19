@@ -10,7 +10,7 @@ var bodyParser = require('body-parser')
 var app = express();
 
 var corsObj = {
-    'origin': ['http://localhost:3000', 'https://masterelectricalskangayam.web.app'],
+    'origin': ['http://localhost:3000', 'http://localhost:3000/products','http://localhost:3000/orderSummary', 'https://masterelectricalskangayam.web.app/products','https://masterelectricalskangayam.web.app/orderSummary',],
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
 };
 
@@ -46,6 +46,18 @@ app.get("/ping", (req, res, next) => {
 
 app.post("/api/items", (request, response) => {
     collection.findOneAndUpdate({ bookid: request.body.bookid }, { $set: request.body }, { upsert: true }, (error, result) => {
+        console.log('request.body: ', request.body)
+        if (error) {
+            return response.status(500).json(error);
+        }
+        console.log('result: ', result);
+        response.status(200).json(result);
+    });
+});
+
+app.post("/api/addItem", (request, response) => {
+
+    collection.insert(request.body, function(error, result){
         console.log('request.body: ', request.body)
         if (error) {
             return response.status(500).json(error);
