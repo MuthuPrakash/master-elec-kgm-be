@@ -55,6 +55,18 @@ app.post("/api/items", (request, response) => {
     });
 });
 
+app.post("/api/addItem", (request, response) => {
+
+    collection.insert(request.body, function(error, result){
+        console.log('request.body: ', request.body)
+        if (error) {
+            return response.status(500).json(error);
+        }
+        console.log('result: ', result);
+        response.status(200).json(result);
+    });
+});
+
 app.get("/api/items", (request, response) => {
     collection.find({}).toArray((error, result) => {
         if (error) {
@@ -77,6 +89,16 @@ app.get("/api/inventory", (request, response) => {
 
 app.get("/api/inventoryRental", (request, response) => {
     inventoryRentalCollection.find({}).toArray((error, result) => {
+        if (error) {
+            return response.status(500).json(error);
+        }
+        console.log(result);
+        response.send(result);
+    });
+});
+
+app.get("/api/inventoryRentalNonReturn", (request, response) => {
+    inventoryRentalCollection.find({isReturned: false}).toArray((error, result) => {
         if (error) {
             return response.status(500).json(error);
         }
