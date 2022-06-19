@@ -58,7 +58,7 @@ app.post("/api/items", (request, response) => {
 app.post("/api/addItem", (request, response) => {
 
     collection.insert(request.body, function(error, result){
-        console.log('request.body: ', request.body)
+        console.log('add new item : request.body: ', request.body)
         if (error) {
             return response.status(500).json(error);
         }
