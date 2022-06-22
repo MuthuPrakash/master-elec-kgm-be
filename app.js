@@ -63,6 +63,7 @@ app.post("/api/addItem", (request, response) => {
             return response.status(500).json(error);
         }
         console.log('result: ', result);
+        response.set('Access-Control-Allow-Origin', '*');
         response.status(200).json(result);
     });
 });
