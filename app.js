@@ -10,7 +10,7 @@ var bodyParser = require('body-parser')
 var app = express();
 
 var corsObj = {
-    'origin': ['http://localhost:3000', 'http://localhost:3000/products','http://localhost:3000/orderSummary', 'https://masterelectricalskangayam.web.app/products','https://masterelectricalskangayam.web.app/orderSummary',],
+    'origin': ['http://localhost:3000', 'http://localhost:3000/products','http://localhost:3000/orderSummary', 'https://masterelectricalskangayam.web.app/', 'https://masterelectricalskangayam.web.app/products','https://masterelectricalskangayam.web.app/orderSummary',],
     'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
 };
 
